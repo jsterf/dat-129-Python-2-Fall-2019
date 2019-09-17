@@ -7,7 +7,7 @@ Joe Sterf
  Week 2
 
 """
-dictionary = {'make':'Chevrolet', 'models' : {'car' : {'name':'Malibu','MPG':'30'}, 'SUV':{'name': 'Equinox', 'MPG':'23'}}}
+dictionary = {'ID': '1234', 'Student Stats':{'Semester': 'Fall', 'Class':'Algebra II', 'Grades':{'Test 1': 93, 'Test 2': 85, 'Test 3':81}}}
 
 #ask user for a new key-value pair to add to dictionary
 def add_value():
@@ -46,29 +46,82 @@ def last_value ():
 
 #print current dictionary keys
 def print_dictionary(selection):
-    for k in selection:
-        print(k)
+    for key, value in selection.items():
+        print(key, value)
+#Python isinstance function https://www.w3schools.com/python/ref_func_isinstance.asp
+    #for key, value in selection.items():
+     #   if isinstance(value, dict):
 
-#print key value
-def print_values (dictionary, selection):
-    print(dictionary[selection])
+      #      for key2, value2 in value.items():
+       #         if isinstance(value2, dict):
+
+        #            for key3, value3 in value2.items():
+
+         #               if isinstance(value3, dict):
+          #                  print()
+           #             else:
+            #                print(key3, value3)
+             #   else:
+              #      print(key2, value2)
+        #else:
+         #   print(key, value)
 
 
-#select key
-def select_key (dictionary):
+
+
+#prints values for selected key
+def print_values (dictionary_temp, selection):
+    print(dictionary_temp[selection])
+
+
+#select key to print values, makes sure its a valid key first
+def select_key (dictionary_temp):
     i = 0
     while i == 0:
         key_selected = input('Select a key to view it\'s values: ')
         if valid(key_selected) == 'True':
-            print_values(dictionary, key_selected)
+            print_values(dictionary_temp, key_selected)
             i =1
         else:
             print('Not a valid key, please select again.')
 
-
+#menu to provide user options
+def menu():
+    i = 0
+    end = 0
+    print('1. View Dictionary')
+    print('2. Add New Key-Values')
+    print('3. Delete Key-Value')
+    print('4. End Program')
+    while i != 1:
+        user_input = input('Make a selection: ')
+        try:
+            user_input = int(user_input)
+            if user_input == 1:
+                print_dictionary(dictionary)
+                i = 1
+            elif user_input == 2 :
+                add_value()
+                i = 1
+            elif user_input == 3 :
+                delete_value()
+                i = 1
+            elif user_input == 4:
+                i = 1
+                end = 1
+            else:
+                print('Not a valid selection')
+        except ValueError:
+            print('Not a valid selection.')
+    return end
 def main():
-    print_dictionary(dictionary)
-    select_key(dictionary)
+    #continue to bring up menu until user decides to stop program
+    stop = 0
+    while stop != 1:
+        stop = menu()
+        print()
+
+
 
 if __name__ == "__main__":
     main()

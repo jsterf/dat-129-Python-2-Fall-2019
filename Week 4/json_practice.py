@@ -20,6 +20,7 @@ f.close()
 test_load = json.loads('{"numbers":[4,2,1,10],"list of strings":["first","second","third"]}')
 
 #print JSON info for 'list of strings'
+print(test_load)
 print(test_load['list of strings'])
 def main():
 

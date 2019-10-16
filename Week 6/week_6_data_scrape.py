@@ -4,6 +4,12 @@ import urllib.request
 import json
 import csv
 
+#open file and clear contents before adding new information
+def clear_file():
+    ticker = open('stock_info.csv','w')
+    ticker.truncate()
+    ticker.close()
+
 def open_file():
     tickers =[]
     with open('ticker.txt','r') as ticker_symbols:
@@ -41,12 +47,14 @@ def output(list):
 def soup_parser (URL):
     # use BeautifulSoup to open webpage and set equal to soup variable
     soup = BeautifulSoup(URL, 'html.parser')
+    #print(soup.prettify())
     # only bring back certain attributes
     # sets all span with a to variable eles
-    eles = soup.find_all('span', attrs={'class': 'Trsdu(0.3s)'})
+    eles = soup.find_all('span', 'Trsdu(0.3s)')
     return eles
 
 def main():
+    clear_file()
     #open file that contains ticker symbols you want to scrape
     ticker_symbols = open_file()
 
@@ -55,11 +63,9 @@ def main():
         pageText = getHTMLPageText(getSearchURL(symbol))
         output(create_list(soup_parser(pageText),symbol))
 
-
-
 if __name__ == "__main__":
     main()
 
 
 
-#print(soup.prettify())
+

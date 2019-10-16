@@ -20,7 +20,7 @@ pageText = getHTMLPageText(getSearchURL('milo'))
 #use BeautifulSoup to open webpage and set equal to soup variabl
 soup = BeautifulSoup(pageText, 'html.parser')
 #print BeautifulSoup object
-#print(soup)
+print(soup.prettify())
 
 #only bring back certain attributes
 #sets all links with a bookTitle class to eles

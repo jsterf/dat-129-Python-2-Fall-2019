@@ -25,7 +25,7 @@ print(soup.prettify())
 #only bring back certain attributes
 #sets all links with a bookTitle class to eles
 eles = soup.find_all('a', 'bookTitle')
-#iterrates thru all book Title items and brings back the text (actual book title) in the link element
+or\\#iterrates thru all book Title items and brings back the text (actual book title) in the link element
 for item in eles:
     tag = item.find('span').string
     print(tag)

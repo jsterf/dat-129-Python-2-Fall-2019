@@ -2,6 +2,7 @@
 import urllib.request
 import json
 import csv
+import pandas as pd
 
 def getSearchURL (category, units):
     #calls API for specific series information
